@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="TagApp" ng-controller="TagCtrl as ctrl">
+<head>
+  <meta charset="UTF-8">
+  <title>Exemplo de Tags</title>
+  <!-- Angular Material CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.2.2/angular-material.min.css">
+</head>
+<body layout="column" layout-padding>
+
+  <h2>Adicione suas tags:</h2>
+
+  <!-- Campo de tags com md-chips -->
+  <md-chips ng-model="ctrl.data.tags"
+            placeholder="Add a TAG and press Enter"
+            secondary-placeholder="+Tag">
+  </md-chips>
+
+  <!-- Mostrar a lista de tags abaixo -->
+  <p><strong>Tags adicionadas:</strong></p>
+  <ul>
+    <li ng-repeat="tag in ctrl.data.tags track by $index">{{ tag }}</li>
+  </ul>
+
+  <!-- Scripts necessários -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-animate/1.8.2/angular-animate.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-aria/1.8.2/angular-aria.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.2.2/angular-material.min.js"></script>
+
+  <!-- Controller -->
+  <script>
+    angular.module(TagApp, [ngMaterial])
+      .controller(TagCtrl, function() {
+        this.data = {
+          tags: []
+        };
+      });
+  </script>
+
+</body>
+</html>
